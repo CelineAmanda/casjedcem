@@ -8,11 +8,15 @@ import org.springframework.stereotype.Service;
 
 import com.casjedcem.model.Category;
 import com.casjedcem.repository.CategoryRepository;
+import com.casjedcem.repository.DocumentRepository;
 
 @Service
 public class CategoryService {
 	@Autowired
 	CategoryRepository categoryRepository;
+	
+	@Autowired
+	DocumentRepository repo;
 
 	public List<Category> getAllCategory() {
 		return categoryRepository.findAll();
@@ -22,13 +26,14 @@ public class CategoryService {
 		categoryRepository.save(category);
 	}
 
-	public void removeCategoryById(int id) {
+	public void removeCategoryById(long id) {
 		categoryRepository.deleteById(id);
 
 	}
 	
-	public Optional<Category> getCategoryById(int id) {
+	public Optional<Category> getCategoryById(long id) {
 		return categoryRepository.findById(id);
 	}
-
+	
+	
 }
